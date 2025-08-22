@@ -27,7 +27,7 @@ export const EmptyState: React.FC<EmptyStateProps> = ({ type, onAction }) => {
     dashboard: {
       icon: TrendingUp,
       title: "Welcome to Dabbulu Urike Ravu!",
-      description: "Your personal expense tracker for bachelor life in India. Start by adding your first expense.",
+      description: "Your personal expense tracker. Start by adding your first expense.",
       actionText: "Add Expense",
       bgColor: "bg-blue-50",
       iconColor: "text-blue-500"
