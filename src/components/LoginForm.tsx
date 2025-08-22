@@ -29,7 +29,6 @@ export const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
           </div>
           <h1 className="text-2xl font-bold text-gray-900 mb-2">Dabbulu Urike Ravu</h1>
           <p className="text-gray-600">Personal Expense Tracker</p>
-          <p className="text-sm text-gray-500 mt-1">Made for Indian bachelor lifestyle</p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-6">
