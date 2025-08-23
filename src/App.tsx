@@ -169,7 +169,7 @@ function App() {
       {/* Floating Add Button */}
       <button
         onClick={() => setIsAddFormOpen(true)}
-        className="fixed bottom-8 left-1/2 transform -translate-x-1/2 w-14 h-14 bg-orange-500 hover:bg-orange-600 text-white rounded-full shadow-lg flex items-center justify-center transition-colors z-40"
+        className="fixed bottom-8 left-8 w-14 h-14 bg-orange-500 hover:bg-orange-600 text-white rounded-full shadow-lg flex items-center justify-center transition-colors z-40"
       >
         <Plus size={24} />
       </button>
