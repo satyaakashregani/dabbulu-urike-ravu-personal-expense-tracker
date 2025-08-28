@@ -70,8 +70,8 @@ export const BudgetManager: React.FC<BudgetManagerProps> = ({
     <div className="space-y-4">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <PiggyBank className="text-teal-600" size={24} />
-          <h2 className="text-xl font-semibold text-gray-900">Budget Manager</h2>
+          <PiggyBank className="text-teal-600 dark:text-teal-400" size={24} />
+          <h2 className="text-xl font-semibold text-gray-900 dark:text-white">Budget Manager</h2>
         </div>
       </div>
 
@@ -85,20 +85,20 @@ export const BudgetManager: React.FC<BudgetManagerProps> = ({
           return (
             <div
               key={category.id}
-              className={`bg-white border rounded-xl p-4 ${
-                isOverBudget ? 'border-red-200 bg-red-50' :
-                isNearLimit ? 'border-yellow-200 bg-yellow-50' :
-                'border-gray-200'
+              className={`bg-white dark:bg-gray-800 border rounded-xl p-4 ${
+                isOverBudget ? 'border-red-200 dark:border-red-800 bg-red-50 dark:bg-red-900/20' :
+                isNearLimit ? 'border-yellow-200 dark:border-yellow-800 bg-yellow-50 dark:bg-yellow-900/20' :
+                'border-gray-200 dark:border-gray-700'
               }`}
             >
               <div className="flex items-center justify-between mb-3">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center">
-                    <IconComponent size={20} className="text-gray-600" />
+                  <div className="w-10 h-10 bg-gray-100 dark:bg-gray-700 rounded-lg flex items-center justify-center">
+                    <IconComponent size={20} className="text-gray-600 dark:text-gray-400" />
                   </div>
                   <div>
-                    <h3 className="font-medium text-gray-900">{category.name}</h3>
-                    <p className="text-sm text-gray-500">
+                    <h3 className="font-medium text-gray-900 dark:text-white">{category.name}</h3>
+                    <p className="text-sm text-gray-500 dark:text-gray-400">
                       Spent: ₹{spent.toLocaleString('en-IN')}
                     </p>
                   </div>
@@ -111,19 +111,19 @@ export const BudgetManager: React.FC<BudgetManagerProps> = ({
                         type="number"
                         value={editAmount}
                         onChange={(e) => setEditAmount(e.target.value)}
-                        className="w-24 px-2 py-1 text-sm border border-gray-300 rounded focus:ring-2 focus:ring-teal-500"
+                        className="w-24 px-2 py-1 text-sm border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded focus:ring-2 focus:ring-teal-500"
                         placeholder="0"
                         autoFocus
                       />
                       <button
                         onClick={handleSave}
-                        className="p-1 text-green-600 hover:bg-green-100 rounded"
+                        className="p-1 text-green-600 dark:text-green-400 hover:bg-green-100 dark:hover:bg-green-900/20 rounded"
                       >
                         <Check size={16} />
                       </button>
                       <button
                         onClick={handleCancel}
-                        className="p-1 text-gray-400 hover:bg-gray-100 rounded"
+                        className="p-1 text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded"
                       >
                         <X size={16} />
                       </button>
@@ -132,12 +132,12 @@ export const BudgetManager: React.FC<BudgetManagerProps> = ({
                     <div className="text-right">
                       {budget ? (
                         <>
-                          <p className="font-medium text-gray-900">
+                          <p className="font-medium text-gray-900 dark:text-white">
                             ₹{budget.monthlyLimit.toLocaleString('en-IN')}
                           </p>
                           <button
                             onClick={() => handleEdit(category.id, budget.monthlyLimit)}
-                            className="p-1 text-gray-400 hover:text-teal-600 hover:bg-teal-50 rounded"
+                            className="p-1 text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 hover:bg-teal-50 dark:hover:bg-teal-900/20 rounded"
                           >
                             <Edit2 size={14} />
                           </button>
@@ -145,7 +145,7 @@ export const BudgetManager: React.FC<BudgetManagerProps> = ({
                       ) : (
                         <button
                           onClick={() => handleEdit(category.id)}
-                          className="text-sm text-teal-600 hover:text-teal-700 font-medium"
+                          className="text-sm text-teal-600 dark:text-teal-400 hover:text-teal-700 dark:hover:text-teal-300 font-medium"
                         >
                           Set Budget
                         </button>
@@ -158,17 +158,17 @@ export const BudgetManager: React.FC<BudgetManagerProps> = ({
               {budget && (
                 <div className="space-y-2">
                   <div className="flex justify-between text-sm">
-                    <span className="text-gray-600">
+                    <span className="text-gray-600 dark:text-gray-400">
                       {percentage.toFixed(0)}% used
                     </span>
                     <span className={`font-medium ${
-                      remaining < 0 ? 'text-red-600' : 'text-gray-900'
+                      remaining < 0 ? 'text-red-600 dark:text-red-400' : 'text-gray-900 dark:text-white'
                     }`}>
                       {remaining < 0 ? 'Over by ' : 'Remaining: '}
                       ₹{Math.abs(remaining).toLocaleString('en-IN')}
                     </span>
                   </div>
-                  <div className="w-full bg-gray-200 rounded-full h-2">
+                  <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
                     <div
                       className={`h-2 rounded-full transition-all ${
                         isOverBudget ? 'bg-red-500' :
@@ -186,8 +186,8 @@ export const BudgetManager: React.FC<BudgetManagerProps> = ({
       </div>
 
       {/* Quick Add Budget for Unset Categories */}
-      <div className="border-t border-gray-200 pt-4">
-        <h3 className="text-sm font-medium text-gray-700 mb-3">Set Budget for Other Categories</h3>
+      <div className="border-t border-gray-200 dark:border-gray-700 pt-4">
+        <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">Set Budget for Other Categories</h3>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
           {categoryBudgets
             .filter(cb => !cb.budget)
@@ -197,7 +197,7 @@ export const BudgetManager: React.FC<BudgetManagerProps> = ({
                 <button
                   key={category.id}
                   onClick={() => handleEdit(category.id)}
-                  className="flex items-center gap-2 p-2 text-sm text-gray-600 hover:text-teal-600 hover:bg-teal-50 rounded-lg transition-colors"
+                  className="flex items-center gap-2 p-2 text-sm text-gray-600 dark:text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 hover:bg-teal-50 dark:hover:bg-teal-900/20 rounded-lg transition-colors"
                 >
                   <IconComponent size={16} />
                   {category.name}

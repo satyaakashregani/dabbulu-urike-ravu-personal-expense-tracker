@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Plus, Home, Receipt, PiggyBank, User, LogOut } from 'lucide-react';
+import { Plus, Home, Receipt, PiggyBank, User, LogOut, Sun, Moon } from 'lucide-react';
 import { User as UserType, Expense } from './types';
 import { storage } from './utils/storage';
+import { useTheme } from './contexts/ThemeContext';
 import { LoginForm } from './components/LoginForm';
 import { AddExpenseForm } from './components/AddExpenseForm';
 import { Dashboard } from './components/Dashboard';
@@ -13,6 +14,7 @@ type Tab = 'dashboard' | 'expenses' | 'budgets';
 
 function App() {
   const [user, setUser] = useState<UserType | null>(null);
+  const { theme, toggleTheme } = useTheme();
   const [currentTab, setCurrentTab] = useState<Tab>('dashboard');
   const [expenses, setExpenses] = useState<Expense[]>([]);
   const [budgets, setBudgets] = useState(storage.getBudgets());
@@ -88,22 +90,28 @@ function App() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors">
       {/* Header */}
-      <header className="bg-white border-b border-gray-200 px-4 py-3">
+      <header className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 px-4 py-3">
         <div className="max-w-6xl mx-auto flex items-center justify-between">
           <div>
-            <h1 className="text-lg font-semibold text-gray-900">Dabbulu Urike Ravu</h1>
-            <p className="text-sm text-gray-500">Personal Expense Tracker</p>
+            <h1 className="text-lg font-semibold text-gray-900 dark:text-white">Dabbulu Urike Ravu</h1>
+            <p className="text-sm text-gray-500 dark:text-gray-400">Personal Expense Tracker</p>
           </div>
           <div className="flex items-center gap-3">
-            <div className="flex items-center gap-2 text-sm text-gray-600">
+            <button
+              onClick={toggleTheme}
+              className="p-2 text-gray-400 hover:text-gray-600 dark:text-gray-300 dark:hover:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
+            >
+              {theme === 'light' ? <Moon size={18} /> : <Sun size={18} />}
+            </button>
+            <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
               <User size={16} />
               {user.email}
             </div>
             <button
               onClick={handleLogout}
-              className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg transition-colors"
+              className="p-2 text-gray-400 hover:text-gray-600 dark:text-gray-300 dark:hover:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
             >
               <LogOut size={18} />
             </button>
@@ -124,8 +132,8 @@ function App() {
                     onClick={() => setCurrentTab(tab.id)}
                     className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-left transition-colors ${
                       currentTab === tab.id
-                        ? 'bg-orange-500 text-white'
-                        : 'text-gray-700 hover:bg-gray-100'
+                        ? 'bg-orange-500 text-white dark:bg-orange-600'
+                        : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
                     }`}
                   >
                     <Icon size={20} />

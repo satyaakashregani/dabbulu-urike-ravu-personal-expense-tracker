@@ -55,7 +55,7 @@ export const ExpensesList: React.FC<ExpensesListProps> = ({
               placeholder="Search expenses..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+              className="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
             />
           </div>
         </div>
@@ -66,7 +66,7 @@ export const ExpensesList: React.FC<ExpensesListProps> = ({
             <select
               value={selectedCategory}
               onChange={(e) => setSelectedCategory(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent appearance-none bg-white"
+              className="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent appearance-none bg-white dark:bg-gray-700"
             >
               <option value="">All Categories</option>
               {defaultCategories.map(category => (
@@ -81,7 +81,7 @@ export const ExpensesList: React.FC<ExpensesListProps> = ({
 
       <div className="space-y-6">
         {Object.entries(groupedExpenses).length === 0 ? (
-          <div className="text-center py-12 text-gray-500">
+          <div className="text-center py-12 text-gray-500 dark:text-gray-400">
             <p>No expenses found</p>
           </div>
         ) : (
@@ -89,7 +89,7 @@ export const ExpensesList: React.FC<ExpensesListProps> = ({
             .sort(([a], [b]) => new Date(b).getTime() - new Date(a).getTime())
             .map(([date, dayExpenses]) => (
               <div key={date} className="space-y-2">
-                <h3 className="text-sm font-medium text-gray-500 px-1">
+                <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400 px-1">
                   {formatDate(date)}
                 </h3>
                 <div className="space-y-1">
@@ -100,28 +100,28 @@ export const ExpensesList: React.FC<ExpensesListProps> = ({
                     return (
                       <div
                         key={expense.id}
-                        className="bg-white border border-gray-200 rounded-lg p-4 hover:shadow-sm transition-shadow"
+                        className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 hover:shadow-sm transition-shadow"
                       >
                         <div className="flex items-center justify-between">
                           <div className="flex items-center gap-3 flex-1">
                             {IconComponent && (
-                              <div className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center">
-                                <IconComponent size={18} className="text-gray-600" />
+                              <div className="w-10 h-10 bg-gray-100 dark:bg-gray-700 rounded-lg flex items-center justify-center">
+                                <IconComponent size={18} className="text-gray-600 dark:text-gray-400" />
                               </div>
                             )}
                             <div className="flex-1">
                               <div className="flex items-center gap-2">
-                                <span className="font-medium text-gray-900">
+                                <span className="font-medium text-gray-900 dark:text-white">
                                   ₹{expense.amount.toLocaleString('en-IN')}
                                 </span>
-                                <span className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">
+                                <span className="text-xs bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 px-2 py-1 rounded">
                                   {expense.paymentMethod}
                                 </span>
                               </div>
-                              <p className="text-sm text-gray-600">
+                              <p className="text-sm text-gray-600 dark:text-gray-400">
                                 {category?.name}
                                 {expense.note && (
-                                  <span className="text-gray-500"> • {expense.note}</span>
+                                  <span className="text-gray-500 dark:text-gray-400"> • {expense.note}</span>
                                 )}
                               </p>
                             </div>
@@ -130,13 +130,13 @@ export const ExpensesList: React.FC<ExpensesListProps> = ({
                           <div className="flex items-center gap-1">
                             <button
                               onClick={() => setEditingExpense(expense)}
-                              className="p-2 text-gray-400 hover:text-orange-500 hover:bg-orange-50 rounded-lg transition-colors"
+                              className="p-2 text-gray-400 hover:text-orange-500 hover:bg-orange-50 dark:hover:bg-orange-900/20 rounded-lg transition-colors"
                             >
                               <Edit2 size={16} />
                             </button>
                             <button
                               onClick={() => onDelete(expense.id)}
-                              className="p-2 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition-colors"
+                              className="p-2 text-gray-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-colors"
                             >
                               <Trash2 size={16} />
                             </button>

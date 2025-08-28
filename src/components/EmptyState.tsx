@@ -38,12 +38,12 @@ export const EmptyState: React.FC<EmptyStateProps> = ({ type, onAction }) => {
   const Icon = config.icon;
 
   return (
-    <div className={`${config.bgColor} rounded-xl p-8 text-center`}>
-      <div className={`inline-flex items-center justify-center w-16 h-16 ${config.iconColor} bg-white rounded-full shadow-sm mb-4`}>
+    <div className={`${config.bgColor} dark:bg-gray-800 rounded-xl p-8 text-center`}>
+      <div className={`inline-flex items-center justify-center w-16 h-16 ${config.iconColor} bg-white dark:bg-gray-700 rounded-full shadow-sm mb-4`}>
         <Icon size={32} />
       </div>
-      <h3 className="text-xl font-semibold text-gray-900 mb-2">{config.title}</h3>
-      <p className="text-gray-600 mb-6 max-w-md mx-auto">{config.description}</p>
+      <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">{config.title}</h3>
+      <p className="text-gray-600 dark:text-gray-300 mb-6 max-w-md mx-auto">{config.description}</p>
       {onAction && (
         <button
           onClick={onAction}
