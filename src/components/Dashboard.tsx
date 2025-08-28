@@ -146,7 +146,6 @@ export const Dashboard: React.FC<DashboardProps> = ({
                     <span className="text-gray-900 dark:text-white">{category.name}</span>
                   </div>
                   <div className="text-right">
-                    <span className="font-medium text-gray-900">
                     <span className="font-medium text-gray-900 dark:text-white">
                       ₹{amount.toLocaleString('en-IN')}
                     </span>
